@@ -3,7 +3,7 @@ package com.codegym.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "blog")
+@Table(name = "blogs")
 public class Blog {
 
     @Id
@@ -12,19 +12,26 @@ public class Blog {
     private String title;
 
     @Column(columnDefinition = "long")
-    private String article;
+    private String content;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     public Blog() {
     }
 
-    public Blog(String title, String article, Category category) {
+    public Blog(String title, String content) {
         this.title = title;
-        this.article = article;
-        this.category = category;
+        this.content = content;
     }
 
     public Long getId() {
@@ -43,19 +50,11 @@ public class Blog {
         this.title = title;
     }
 
-    public String getArticle() {
-        return article;
+    public String getContent() {
+        return content;
     }
 
-    public void setArticle(String article) {
-        this.article = article;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setContent(String content) {
+        this.content = content;
     }
 }

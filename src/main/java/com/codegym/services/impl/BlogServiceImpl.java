@@ -12,11 +12,26 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class BlogServiceImpl implements BlogService {
     @Autowired
-    BlogRepository blogRepository;
+    private BlogRepository blogRepository;
 
     @Override
-    public Iterable<Blog> findAll() {
-        return blogRepository.findAll();
+    public Page<Blog> findAll(Pageable pageable) {
+        return blogRepository.findAll(pageable);
+    }
+
+    @Override
+    public Iterable<Blog> findAllByCategory(Category category) {
+        return blogRepository.findAllByCategory(category);
+    }
+
+    @Override
+    public Page<Blog> findAllByTitleContaining(String title, Pageable pageable) {
+        return blogRepository.findAllByTitleContaining(title, pageable);
+    }
+
+    @Override
+    public Page<Blog> findAllByCategory_Id(Long id, Pageable pageable) {
+        return blogRepository.findAllByCategory_Id(id, pageable);
     }
 
     @Override
@@ -32,15 +47,5 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public void remove(Long id) {
         blogRepository.delete(id);
-    }
-
-    @Override
-    public Iterable<Blog> findAllByCategory(Category category) {
-        return blogRepository.findAllByCategory(category);
-    }
-
-    @Override
-    public Page<Blog> findAll(Pageable pageable) {
-        return blogRepository.findAll(pageable);
     }
 }

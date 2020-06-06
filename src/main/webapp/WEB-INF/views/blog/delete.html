@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Delete</title>
+    <title>Edit blog</title>
 </head>
 <body>
-<h3>Delete a blog</h3>
-<div>
-    <a th:href="@{/WEB-INF/views/blog}"></a>
-</div>
-
-<form method="post" th:action="@{/blog/delete}" th:object="${blog}">
+<h1>Edit blog</h1>
+<p>
+    <a href="/blogs">Blog list</a>
+</p>
+<form th:action="@{/delete-blog}" th:object="${blog}" method="post">
     <input type="hidden" th:field="*{id}">
     <div>
         <label>Title: </label>
@@ -18,15 +17,14 @@
     </div>
 
     <div>
-        <label>Article: </label>
-        <textarea rows="10" cols="20" th:field="*{article}"></textarea>
+        <label>Content: </label>
+        <textarea rows="10" cols="20" th:field="*{content}"></textarea>
     </div>
 
     <div>
         <label>Category: </label>
         <p th:text="${blog.category.getName()}"></p>
     </div>
-
     <div>
         <input type="submit" value="Delete">
     </div>

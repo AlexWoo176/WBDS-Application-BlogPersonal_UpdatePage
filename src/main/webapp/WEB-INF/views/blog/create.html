@@ -1,15 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create blog</title>
 </head>
 <body>
-<h3>Add a blog</h3>
-
-<div><a th:href="@{/WEB-INF/views/blog}"> Back to list blog</a></div>
-
-<form method="post" th:action="@{/blog/create}" th:object="${blog}">
+<h1>Create blog</h1>
+<p>
+    <a href="/blogs">Blog list</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/create-blog}" th:object="${blog}" method="post">
     <div>
         <input type="hidden" th:field="*{id}">
     </div>
@@ -18,8 +21,8 @@
         <input type="text" th:field="*{title}">
     </div>
     <div>
-        <label>Article: </label><br>
-        <textarea rows="20" cols="100" th:field="*{article}" placeholder="Enter your block"></textarea>
+        <label>Content: </label><br>
+        <textarea rows="20" cols="100" th:field="*{content}" placeholder="Enter your block"></textarea>
     </div>
     <div>
         <label>Category: </label>

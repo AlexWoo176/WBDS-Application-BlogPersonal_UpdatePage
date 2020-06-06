@@ -14,8 +14,8 @@ public class Blog {
     @Column(columnDefinition = "long")
     private String content;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @OneToOne
+//    @JoinColumn(name = "category_id")
     private Category category;
 
     public Category getCategory() {

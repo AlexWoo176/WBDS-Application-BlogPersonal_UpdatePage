@@ -9,7 +9,7 @@
 <a href="/categories"> Category List</a>
 <h1>Blog</h1>
 <form>
-    Search by tittle:
+    Search by title:
     <input name="s" type="text"/>
     <input type="submit" value="Search"/>
 </form><br/>
@@ -21,7 +21,7 @@
 </form><br/>
 <table border="1">
     <tr>
-        <th>Tittle</th>
+        <th>Title</th>
         <th>Content</th>
         <th>Category</th>
         <th>Edit</th>
@@ -29,7 +29,7 @@
     </tr>
     <th:block th:each="blog : ${blogs}">
         <tr>
-            <td th:text="${blog.tittle}"></td>
+            <td th:text="${blog.title}"></td>
             <td th:text="${blog.content}"></td>
             <td th:text="${blog.category?.name}"></td>
             <td><a th:href="@{/edit-blog/__${blog.id}__ }">Edit</a></td>
